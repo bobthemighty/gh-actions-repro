@@ -35,6 +35,15 @@ resource "github_repository_environment" "this" {
   environment = var.environment
 }
 
+resource "github_actions_environment_secret" "dynamic_plain" {
+  for_each = local.plain
+
+  repository      = var.repo
+  environment     = github_repository_environment.this.environment
+  secret_name     = each.key
+  plaintext_value = each.value
+}
+
 resource "github_actions_environment_secret" "dynamic_encrypted" {
   for_each = local.secrets
 
