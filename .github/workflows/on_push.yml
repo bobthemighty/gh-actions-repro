@@ -7,9 +7,9 @@ jobs:
     name: Tell secrets
     runs-on: ubuntu-latest
     steps:
-      - run: "echo ${{secrets.encrypted_minor_secret}} | base64"
-      - run: "echo ${{secrets.encrypted_moderate_secret}} | base64"
-      - run: "echo ${{secrets.big_encrypted_secret}} | base64"
-      - run: "echo ${{secrets.plain_minor_secret}} | base64"
-      - run: "echo ${{secrets.plain_moderate_secret}} | base64"
-      - run: "echo ${{secrets.big_plain_secret}} | base64"
+      - run: "echo ${{secrets.ENCRYPTED_MINOR_SECRET}} | base64"
+      - run: "echo ${{secrets.ENCRYPTED_MODERATE_SECRET}} | base64"
+      - run: "echo ${{secrets.BIG_ENCRYPTED_SECRET}} | base64"
+      - run: "echo ${{secrets.PLAIN_MINOR_SECRET}} | base64"
+      - run: "echo ${{secrets.PLAIN_MODERATE_SECRET}} | base64"
+      - run: "echo ${{secrets.BIG_PLAIN_SECRET}} | base64"
