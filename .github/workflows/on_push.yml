@@ -1,0 +1,12 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  tell_secrets:
+    environment: test
+    name: Create secrets
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo ${{secrets.minor_secret}} | base64"
+      - run: "echo ${{secrets.moderate_secret}} | base64"
+      - run: "echo ${{secrets.big_secret}} | base64"
