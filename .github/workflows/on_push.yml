@@ -1,5 +1,5 @@
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   test_step_outputs:
@@ -29,7 +29,7 @@ jobs:
 
   get_job_outputs:
     runs-on: ubuntu-latest
-    needs: set_outputs
+    needs: set_job_outputs
     steps:
       -
        id: get_outputs
