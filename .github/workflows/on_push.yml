@@ -2,19 +2,40 @@ on:
   workflow_dispatch:
 
 jobs:
-  set_outputs:
-    runs-on: ubuntu-latest
+  test_step_outputs:
+    steps:
+     -
+       id: set_outputs
+       runs-on: ubuntu-latest
+       outputs:
+         foo: 123
+         bar: 234
+
+     -
+       id: get_outputs
+       needs: set_outputs
+       uses: actions/github-script@v6
+       with:
+         script: |
+           const outputs = ${{steps.set_outputs.outputs}};
+           console.log(outputs.foo)
+           console.log(outputs.bar)
+
+  set_job_outputs:
     steps:
       - run: echo hello world
     outputs:
       foo: 123
       bar: 234
 
-  get_outputs:
-    needs: set_outputs
-    uses: actions/github-script@v6
-    with:
-      script: |
-        const outputs = ${{needs.set_outputs.outputs}};
-        console.log(outputs.foo)
-        console.log(outputs.bar)
+  get_job_outputs:
+    steps:
+      -
+       id: get_outputs
+       needs: set_outputs
+       uses: actions/github-script@v6
+       with:
+         script: |
+           const outputs = ${{needs.set_outputs.outputs}};
+           console.log(outputs.foo)
+           console.log(outputs.bar)
