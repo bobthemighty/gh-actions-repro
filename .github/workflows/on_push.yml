@@ -6,14 +6,11 @@ jobs:
     steps:
      -
        id: set_outputs
-       run: echo hello world
-       outputs:
-         foo: 123
-         bar: 234
-
+       run: |
+         echo ::set-output name=foo::123"
+         echo ::set-output name=bar::234"
      -
        id: get_outputs
-       needs: set_outputs
        uses: actions/github-script@v6
        with:
          script: |
