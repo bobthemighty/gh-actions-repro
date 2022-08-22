@@ -3,6 +3,7 @@ on:
 
 jobs:
   test_step_outputs:
+    runs-on: ubuntu-latest
     steps:
      -
        id: set_outputs
@@ -19,6 +20,7 @@ jobs:
            console.log(outputs.bar)
 
   set_job_outputs:
+    runs-on: ubuntu-latest
     steps:
       - run: echo hello world
     outputs:
@@ -26,6 +28,7 @@ jobs:
       bar: 234
 
   get_job_outputs:
+    runs-on: ubuntu-latest
     steps:
       -
        id: get_outputs
