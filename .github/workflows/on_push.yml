@@ -6,7 +6,6 @@ jobs:
     steps:
      -
        id: set_outputs
-       runs-on: ubuntu-latest
        run: echo hello world
        outputs:
          foo: 123
