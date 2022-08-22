@@ -2,14 +2,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  tell_secrets:
-    environment: test
-    name: Tell secrets
+  set_outputs:
     runs-on: ubuntu-latest
-    steps:
-      - run: 'echo "${{secrets.ENCRYPTED_MINOR_SECRET}}" | base64'
-      - run: 'echo "${{secrets.ENCRYPTED_MODERATE_SECRET}}" | base64'
-      - run: 'echo "${{secrets.BIG_ENCRYPTED_SECRET}}" | base64'
-      - run: 'echo "${{secrets.PLAIN_MINOR_SECRET}}" | base64'
-      - run: 'echo "${{secrets.PLAIN_MODERATE_SECRET}}" | base64'
-      - run: 'echo "${{secrets.BIG_PLAIN_SECRET}}" | base64'
+    outputs:
+      foo: 123
+      bar: 234
+
+    get_outputs:
+      needs: set_outputs
+      uses: actions/github-script@v6
+      script: |
+        const outputs = ${{needs.set_outputs.outputs}};
+        console.log(outputs.foo)
+        console.log(outputs.bar)
