@@ -10,10 +10,10 @@ jobs:
       foo: 123
       bar: 234
 
-    get_outputs:
-      needs: set_outputs
-      uses: actions/github-script@v6
-      script: |
-        const outputs = ${{needs.set_outputs.outputs}};
-        console.log(outputs.foo)
-        console.log(outputs.bar)
+  get_outputs:
+    needs: set_outputs
+    uses: actions/github-script@v6
+    script: |
+      const outputs = ${{needs.set_outputs.outputs}};
+      console.log(outputs.foo)
+      console.log(outputs.bar)
