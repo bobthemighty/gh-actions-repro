@@ -36,6 +36,6 @@ jobs:
        uses: actions/github-script@v6
        with:
          script: |
-           const outputs = ${{needs.set_outputs.outputs}};
+           const outputs = ${{needs.set_job_outputs.outputs}};
            console.log(outputs.foo)
            console.log(outputs.bar)
