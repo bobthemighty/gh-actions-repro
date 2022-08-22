@@ -4,6 +4,8 @@ on:
 jobs:
   set_outputs:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo hello world
     outputs:
       foo: 123
       bar: 234
